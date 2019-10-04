@@ -63,7 +63,7 @@ Accessor.prototype.transformRow = function(dataIn, type){
 	//clone data object with deep copy to isolate internal data from returned result
 	var data = Tabulator.prototype.helpers.deepClone(dataIn || {});
 
-    if (column.modules.accessor){
+    if (self.table.modules.accessor){
 	    self.table.columnManager.traverse(function(column){
 		    var value, accessor, params, component;
 
