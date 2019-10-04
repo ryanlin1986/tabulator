@@ -261,7 +261,6 @@ Tabulator.prototype.defaultOptions = {
 	//data callbacks
 	dataLoading:function(){},
 	dataLoaded:function(){},
-	dataEdited:function(){},
 
 	//ajax callbacks
 	ajaxRequesting:function(){},

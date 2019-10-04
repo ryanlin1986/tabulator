@@ -383,7 +383,8 @@ RowManager.prototype.deleteRow = function(row, blockRedraw){
 
 	this.table.options.rowDeleted.call(this.table, row.getComponent());
 
-	this.table.options.dataEdited.call(this.table, this.getData());
+    if (this.table.options.dataEdited)
+	    this.table.options.dataEdited.call(this.table, this.getData());
 
 	if(this.table.options.groupBy && this.table.modExists("groupRows")){
 		this.table.modules.groupRows.updateGroupRows(true);
@@ -564,7 +565,8 @@ RowManager.prototype.addRowActual = function(data, pos, index, blockRedraw){
 
 	this.table.options.rowAdded.call(this.table, row.getComponent());
 
-	this.table.options.dataEdited.call(this.table, this.getData());
+    if (this.table.options.dataEdited)
+	    this.table.options.dataEdited.call(this.table, this.getData());
 
 	if(!blockRedraw){
 		this.reRenderInPosition();
