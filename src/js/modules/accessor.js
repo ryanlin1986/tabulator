@@ -63,23 +63,23 @@ Accessor.prototype.transformRow = function(dataIn, type){
 	//clone data object with deep copy to isolate internal data from returned result
 	var data = Tabulator.prototype.helpers.deepClone(dataIn || {});
 
-    if (self.table.modules.accessor){
-	    self.table.columnManager.traverse(function(column){
-		    var value, accessor, params, component;
+	self.table.columnManager.traverse(function(column){
+		var value, accessor, params, component;
 
-			accessor = column.modules.accessor[key] || column.modules.accessor.accessor || false;
+        if (column.modules.accessor) {
+            accessor = column.modules.accessor[key] || column.modules.accessor.accessor || false;
 
-			if(accessor){
-				value = column.getFieldValue(data);
+            if (accessor) {
+                value = column.getFieldValue(data);
 
-				if(value != "undefined"){
-					component = column.getComponent();
-					params = typeof accessor.params === "function" ? accessor.params(value, data, type, component) : accessor.params;
-					column.setFieldValue(data, accessor.accessor(value, data, type, params, component));
-				}
-			}
-	    });
-    }
+                if (value != "undefined") {
+                    component = column.getComponent();
+                    params = typeof accessor.params === "function" ? accessor.params(value, data, type, component) : accessor.params;
+                    column.setFieldValue(data, accessor.accessor(value, data, type, params, component));
+                }
+            }
+        }
+	});
 	return data;
 },
 
