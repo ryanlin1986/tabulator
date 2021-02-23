@@ -586,8 +586,10 @@ Cell.prototype.checkHeight = function(){
 };
 
 Cell.prototype.clearHeight = function(){
-	this.element.style.height = "";
-	this.height = null;
+	if(this.table.options.rowHeight==null){
+		this.element.style.height = "";
+		this.height = null;
+	}
 };
 
 
@@ -597,7 +599,7 @@ Cell.prototype.setHeight = function(){
 };
 
 Cell.prototype.getHeight = function(){
-	return this.height || this.element.offsetHeight;
+	return this.table.options.rowHeight || this.height || this.element.offsetHeight;
 };
 
 Cell.prototype.show = function(){

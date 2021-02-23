@@ -30,7 +30,7 @@ var Tabulator = function(element, options){
 
 //default setup options
 Tabulator.prototype.defaultOptions = {
-
+	rowHeight:false, //fixed row height to improve performance, which does avoid the need of calculate cell height 
 	height:false, //height of tabulator
 
 	layout:"fitData", ///layout type "fitColumns" | "fitData"
